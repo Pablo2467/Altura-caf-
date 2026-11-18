@@ -14,5 +14,27 @@
   "search": "Buscar en el menú...",
   "noResults": "No encontramos productos con esa búsqueda",
   "loading": "Cargando...",
-  "error": "No pudimos cargar la información. Intenta de nuevo."
+  "error": "No pudimos cargar la información. Intenta de nuevo.",
+    "staffAccess": "Acceso personal",
+  "login": {
+    "title": "Acceso del personal",
+    "subtitle": "Ingresa con tu cuenta de Altura Café",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "submitting": "Ingresando...",
+    "invalid": "Correo o contraseña incorrectos",
+    "serverError": "No pudimos conectar con el servidor",
+    "back": "Volver al menú"
+  },
+  "logout": "Cerrar sesión",
+  "roles": {
+    "ADMIN": "Administrador",
+    "WAITER": "Mesero",
+    "BARISTA": "Barista"
+  },
+  "admin": { "title": "Panel de administración" },
+  "waiter": { "title": "Mesas y pedidos" },
+  "barista": { "title": "Preparación de pedidos" },
+  "soon": "Este módulo se construye en los próximos pasos."
 }

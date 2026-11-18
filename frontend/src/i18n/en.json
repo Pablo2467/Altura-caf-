@@ -14,5 +14,27 @@
   "search": "Search the menu...",
   "noResults": "No products match your search",
   "loading": "Loading...",
-  "error": "We couldn't load the information. Please try again."
+  "error": "We couldn't load the information. Please try again.",
+    "staffAccess": "Staff access",
+  "login": {
+    "title": "Staff access",
+    "subtitle": "Sign in with your Altura Café account",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "invalid": "Incorrect email or password",
+    "serverError": "We couldn't reach the server",
+    "back": "Back to menu"
+  },
+  "logout": "Sign out",
+  "roles": {
+    "ADMIN": "Administrator",
+    "WAITER": "Waiter",
+    "BARISTA": "Barista"
+  },
+  "admin": { "title": "Administration panel" },
+  "waiter": { "title": "Tables & orders" },
+  "barista": { "title": "Order preparation" },
+  "soon": "This module is built in the next steps."
 }

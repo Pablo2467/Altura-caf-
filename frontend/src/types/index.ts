@@ -26,3 +26,18 @@ export interface Category {
   sortOrder: number;
   products: Product[];
 }
+
+export type Role = 'ADMIN' | 'WAITER' | 'BARISTA';
+
+export interface AuthUser {
+  id: number;
+  name: string;
+  email: string;
+  role: Role;
+  branchId: number | null;
+}
+
+export interface LoginResponse {
+  accessToken: string;
+  user: AuthUser;
+}
