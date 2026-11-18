@@ -6,10 +6,17 @@ import { PrismaModule } from './prisma/prisma.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { MenuModule } from './menu/menu.module.js';
 import { OrdersModule } from './orders/orders.module.js';
-
+import { BaristaModule } from './barista/barista.module.js';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), PrismaModule, AuthModule, MenuModule, OrdersModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    PrismaModule,
+    AuthModule,
+    MenuModule,
+    OrdersModule,
+    BaristaModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
