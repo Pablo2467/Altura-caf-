@@ -7,6 +7,9 @@ import { AuthModule } from './auth/auth.module.js';
 import { MenuModule } from './menu/menu.module.js';
 import { OrdersModule } from './orders/orders.module.js';
 import { BaristaModule } from './barista/barista.module.js';
+import { ProductsModule } from './products/products.module.js';
+import { UsersModule } from './users/users.module.js';
+import { ReportsModule } from './reports/reports.module.js';
 
 @Module({
   imports: [
@@ -16,6 +19,9 @@ import { BaristaModule } from './barista/barista.module.js';
     MenuModule,
     OrdersModule,
     BaristaModule,
+    ProductsModule,
+    UsersModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

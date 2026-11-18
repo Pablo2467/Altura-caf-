@@ -94,3 +94,72 @@ export interface BaristaOrder {
   waiter: { name: string };
   items: BaristaOrderItem[];
 }
+
+export interface AdminCategory {
+  id: number;
+  nameEs: string;
+  nameEn: string;
+  sortOrder: number;
+}
+
+export interface AdminProduct extends Product {
+  available: boolean;
+  categoryId: number;
+  category: { id: number; nameEs: string; nameEn: string };
+}
+
+export interface StaffMember {
+  id: number;
+  name: string;
+  email: string;
+  role: Role;
+  active: boolean;
+  branchId: number | null;
+  createdAt: string;
+}
+
+export type RangeKey = 'today' | '7d' | '30d';
+
+export interface DashboardData {
+  range: RangeKey;
+  revenue: number;
+  orders: number;
+  avgTicket: number;
+  itemsSold: number;
+  previous: { revenue: number; orders: number };
+  byMethod: { method: PaymentMethod; amount: number; count: number }[];
+  topProducts: {
+    productId: number;
+    nameEs: string;
+    nameEn: string;
+    quantity: number;
+    revenue: number;
+  }[];
+  byHour: { hour: number; orders: number; revenue: number }[];
+  byDay: { date: string; orders: number; revenue: number }[];
+}
+
+export interface SaleItem {
+  quantity: number;
+  unitPrice: number;
+  nameEs: string;
+  nameEn: string;
+}
+
+export interface SaleRecord {
+  paymentId: number;
+  orderId: number;
+  paidAt: string;
+  amount: number;
+  method: PaymentMethod;
+  tableNumber: number;
+  waiter: string;
+  items: SaleItem[];
+}
+
+export interface SalesHistoryResponse {
+  total: number;
+  page: number;
+  pageSize: number;
+  items: SaleRecord[];
+}

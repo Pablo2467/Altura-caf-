@@ -1,7 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import PublicMenu from "./pages/public/PublicMenu";
 import Login from "./pages/Login";
+import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHome from "./pages/admin/AdminHome";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminStaff from "./pages/admin/AdminStaff";
 import WaiterHome from "./pages/waiter/WaiterHome";
 import TableOrder from "./pages/waiter/TableOrder";
 import BaristaHome from "./pages/barista/BaristaHome";
@@ -16,7 +19,11 @@ export default function App() {
 
       <Route element={<ProtectedRoute roles={["ADMIN"]} />}>
         <Route element={<StaffLayout />}>
-          <Route path="/admin" element={<AdminHome />} />
+          <Route element={<AdminLayout />}>
+            <Route path="/admin" element={<AdminHome />} />
+            <Route path="/admin/products" element={<AdminProducts />} />
+            <Route path="/admin/staff" element={<AdminStaff />} />
+          </Route>
         </Route>
       </Route>
 
