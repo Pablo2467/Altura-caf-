@@ -1,0 +1,18 @@
+{
+  "brand": "Altura Café",
+  "heroTitle": "Bienvenido a Altura Café",
+  "heroSub": "Café de origen huilense, preparado con calma",
+  "chooseBranch": "Elige tu sede",
+  "chooseBranchSub": "Selecciona la más cercana para ver el menú disponible",
+  "open": "Abierto",
+  "closed": "Cerrado",
+  "until": "Hasta las {{time}}",
+  "opensAt": "Abre a las {{time}}",
+  "change": "Cambiar sede",
+  "menu": "Menú",
+  "all": "Todo",
+  "search": "Buscar en el menú...",
+  "noResults": "No encontramos productos con esa búsqueda",
+  "loading": "Cargando...",
+  "error": "No pudimos cargar la información. Intenta de nuevo."
+}

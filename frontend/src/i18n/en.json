@@ -1,0 +1,18 @@
+{
+  "brand": "Altura Café",
+  "heroTitle": "Welcome to Altura Café",
+  "heroSub": "Coffee from Huila, prepared with care",
+  "chooseBranch": "Choose your branch",
+  "chooseBranchSub": "Select the closest one to see its available menu",
+  "open": "Open",
+  "closed": "Closed",
+  "until": "Until {{time}}",
+  "opensAt": "Opens at {{time}}",
+  "change": "Change branch",
+  "menu": "Menu",
+  "all": "All",
+  "search": "Search the menu...",
+  "noResults": "No products match your search",
+  "loading": "Loading...",
+  "error": "We couldn't load the information. Please try again."
+}

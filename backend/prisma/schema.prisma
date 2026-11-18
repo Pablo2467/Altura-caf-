@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- ENUMS ----------
+enum Role {
+  ADMIN
+  WAITER
+  BARISTA
+}
+
+enum TableStatus {
+  AVAILABLE
+  OCCUPIED
+}
+
+enum OrderStatus {
+  PENDING    // enviado al barista
+  PREPARING  // el barista lo está preparando
+  READY      // listo para entregar
+  DELIVERED  // entregado en la mesa
+  PAID       // cuenta pagada
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+  TRANSFER
+}
+
+// MODELOS 
+model Branch {
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  phone     String?
+  imageUrl  String?
+  openTime  String   @default("08:00")
+  closeTime String   @default("20:00")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  users  User[]
+  tables CafeTable[]
+  orders Order[]
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role
+  active       Boolean  @default(true)
+  branchId     Int?
+  createdAt    DateTime @default(now())
+
+  branch Branch? @relation(fields: [branchId], references: [id])
+  orders Order[]
+}
+
+model CafeTable {
+  id       Int         @id @default(autoincrement())
+  number   Int
+  status   TableStatus @default(AVAILABLE)
+  branchId Int
+
+  branch Branch  @relation(fields: [branchId], references: [id])
+  orders Order[]
+
+  @@unique([branchId, number])
+}
+
+model Category {
+  id        Int    @id @default(autoincrement())
+  nameEs    String
+  nameEn    String
+  sortOrder Int    @default(0)
+
+  products Product[]
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  nameEs        String
+  nameEn        String
+  descriptionEs String
+  descriptionEn String
+  price         Int // en pesos COP, sin decimales
+  imageUrl      String?
+  available     Boolean  @default(true)
+  categoryId    Int
+  createdAt     DateTime @default(now())
+
+  category Category    @relation(fields: [categoryId], references: [id])
+  items    OrderItem[]
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  status    OrderStatus @default(PENDING)
+  notes     String?
+  tableId   Int
+  branchId  Int
+  waiterId  Int
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  table   CafeTable   @relation(fields: [tableId], references: [id])
+  branch  Branch      @relation(fields: [branchId], references: [id])
+  waiter  User        @relation(fields: [waiterId], references: [id])
+  items   OrderItem[]
+  payment Payment?
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  unitPrice Int // precio guardado al momento del pedido
+  notes     String?
+  orderId   Int
+  productId Int
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+}
+
+model Payment {
+  id        Int           @id @default(autoincrement())
+  amount    Int
+  method    PaymentMethod
+  orderId   Int           @unique
+  createdAt DateTime      @default(now())
+
+  order Order @relation(fields: [orderId], references: [id])
+}

@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: alturacafe-db
+    environment:
+      POSTGRES_USER: alturacafe
+      POSTGRES_PASSWORD: alturacafe123
+      POSTGRES_DB: alturacafe
+    ports:
+      - "5433:5432"
+    volumes:
+      - alturacafe_data:/var/lib/postgresql/data
+
+volumes:
+  alturacafe_data:
