@@ -84,7 +84,6 @@ export default function PublicMenu() {
           <h1 className="text-3xl font-bold text-cafe sm:text-4xl">
             {t("heroTitle")}
           </h1>
-          <p className="mt-1 text-cafe-oscuro/70">{t("heroSub")}</p>
         </section>
 
         {/* Sede actual */}
