@@ -6,6 +6,7 @@ import type { Branch, Category } from "../../types";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
 import BranchPicker from "../../components/BranchPicker";
 import { Link } from "react-router-dom";
+import ProductImage from "../../components/ProductImage";
 
 const ICONS = ["☕", "🧊", "🥤", "🍰"];
 
@@ -167,9 +168,12 @@ export default function PublicMenu() {
                   key={p.id}
                   className="overflow-hidden rounded-2xl border border-cafe/10 bg-white shadow-sm"
                 >
-                  <div className="flex h-32 items-center justify-center bg-linear-to-br from-caramelo/20 to-cafe/20 text-5xl">
-                    {ICONS[(c.sortOrder - 1) % ICONS.length]}
-                  </div>
+                  <ProductImage
+                    src={p.imageUrl}
+                    alt={isEn ? p.nameEn : p.nameEs}
+                    fallback={ICONS[(c.sortOrder - 1) % ICONS.length]}
+                    className="h-40 w-full"
+                  />
                   <div className="p-4">
                     <h3 className="font-semibold">
                       {isEn ? p.nameEn : p.nameEs}
