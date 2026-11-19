@@ -10,6 +10,8 @@ import TableOrder from "./pages/waiter/TableOrder";
 import BaristaHome from "./pages/barista/BaristaHome";
 import ProtectedRoute from "./components/ProtectedRoute";
 import StaffLayout from "./components/StaffLayout";
+import AdminDatabase from "./pages/admin/AdminDatabase";
+
 
 export default function App() {
   return (
@@ -41,6 +43,7 @@ export default function App() {
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="/admin/database" element={<AdminDatabase />} />
     </Routes>
   );
 }

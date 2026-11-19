@@ -12,6 +12,32 @@ const slug = (s: string) =>
     .replace(/^-|-$/g, '');
 
 async function main() {
+
+  if (
+    process.env.SEED_CONFIRM !==
+    'CONFIRMAR_BASE_VACIA'
+  ) {
+    throw new Error(
+      'Carga inicial bloqueada: requiere confirmación.'
+    );
+  }
+
+  const requiredPasswords = [
+    process.env.SEED_ADMIN_PASSWORD,
+    process.env.SEED_WAITER_PASSWORD,
+    process.env.SEED_BARISTA_PASSWORD,
+  ];
+
+  if (
+    requiredPasswords.some(
+      (password) => !password || password.length < 12,
+    )
+  ) {
+    throw new Error(
+      'Configura contraseñas de al menos 12 caracteres.'
+    );
+  }
+
   await prisma.payment.deleteMany();
   await prisma.orderItem.deleteMany();
   await prisma.order.deleteMany();
@@ -61,27 +87,33 @@ async function main() {
       })),
     });
   }
-  const users: { name: string; email: string; password: string; role: Role }[] =
-    [
-      {
-        name: 'Administrador',
-        email: 'admin@alturacafe.com',
-        password: 'Admin123*',
-        role: Role.ADMIN,
-      },
-      {
-        name: 'Laura Mesera',
-        email: 'mesero@alturacafe.com',
-        password: 'Mesero123*',
-        role: Role.WAITER,
-      },
-      {
-        name: 'Carlos Barista',
-        email: 'barista@alturacafe.com',
-        password: 'Barista123*',
-        role: Role.BARISTA,
-      },
-    ];
+  
+  const users: {
+    name: string;
+    email: string;
+    password: string;
+    role: Role;
+  }[] = [
+    {
+      name: 'Administrador',
+      email: 'admin@alturacafe.com',
+      password: process.env.SEED_ADMIN_PASSWORD!,
+      role: Role.ADMIN,
+    },
+    {
+      name: 'Laura Mesera',
+      email: 'mesero@alturacafe.com',
+      password: process.env.SEED_WAITER_PASSWORD!,
+      role: Role.WAITER,
+    },
+    {
+      name: 'Carlos Barista',
+      email: 'barista@alturacafe.com',
+      password: process.env.SEED_BARISTA_PASSWORD!,
+      role: Role.BARISTA,
+    },
+  ];
+
   for (const u of users) {
     await prisma.user.create({
       data: {

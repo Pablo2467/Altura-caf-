@@ -5,6 +5,8 @@ const TABS = [
   { to: '/admin', key: 'dashboard', icon: '📊', end: true },
   { to: '/admin/products', key: 'products', icon: '☕', end: false },
   { to: '/admin/staff', key: 'staff', icon: '👥', end: false },
+    { to: '/admin/staff', key: 'staff', icon: '👥', end: false },
+  { to: '/admin/database', key: 'database', icon: '🗄️', end: false },
 ];
 
 export default function AdminLayout() {

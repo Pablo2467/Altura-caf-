@@ -163,3 +163,34 @@ export interface SalesHistoryResponse {
   pageSize: number;
   items: SaleRecord[];
 }
+
+export interface DbTableInfo {
+  name: string;
+  count: number;
+}
+
+export interface DbOverview {
+  database: string;
+  version: string;
+  tables: DbTableInfo[];
+}
+
+export interface DbColumn {
+  name: string;
+  type: string;
+  kind: 'enum' | 'date' | 'boolean' | 'number' | 'text';
+  nullable: boolean;
+  isPrimary: boolean;
+  references: string | null;
+  hidden: boolean;
+}
+
+export interface DbTableData {
+  name: string;
+  columns: DbColumn[];
+  rows: Record<string, unknown>[];
+  total: number;
+  page: number;
+  pages: number;
+  pageSize: number;
+}

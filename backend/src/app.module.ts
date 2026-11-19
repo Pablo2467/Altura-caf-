@@ -10,6 +10,8 @@ import { BaristaModule } from './barista/barista.module.js';
 import { ProductsModule } from './products/products.module.js';
 import { UsersModule } from './users/users.module.js';
 import { ReportsModule } from './reports/reports.module.js';
+import { DatabaseModule } from './database/database.module.js';
+
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import { ReportsModule } from './reports/reports.module.js';
     ProductsModule,
     UsersModule,
     ReportsModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
